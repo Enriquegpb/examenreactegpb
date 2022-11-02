@@ -24,7 +24,6 @@ export default class Router extends Component {
         <BrowserRouter>
         <MenuPeliculas/>
         <Routes>
-            {/* <Route path="/" element={<Home/>}/> */}
             <Route path="/agregarpersonaje" element={<AgregarPersonaje/>}/>
             <Route path="/modificarpersonajeseries" element={<ModificarPersonajesSeries/>}/>
             <Route path="/detalleserie/:idserie" element={<DetallesSerieElement/>}/>

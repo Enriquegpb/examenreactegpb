@@ -25,10 +25,10 @@ export default class DetallesSerie extends Component {
         this.getSerie();
     }
   render() {
+    if(this.state.status==true){
     return (
       <div>
         <h1>Detalles Serie</h1>
-
         <img src={this.state.serie.imagen}/>
         <h1>{this.state.serie.nombre}</h1>
         <h1>IMDB:{this.state.serie.puntuacion}</h1>
@@ -36,4 +36,5 @@ export default class DetallesSerie extends Component {
       </div>
     )
   }
+}
 }

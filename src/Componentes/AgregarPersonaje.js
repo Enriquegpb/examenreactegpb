@@ -16,15 +16,13 @@ export default class AgregarPersonaje extends Component {
         status:false,
         statusGet:false,
         series:[],
-        
-        
+        serie:{}
     }
 
     insertarPersonaje=(e)=>{
         e.preventDefault();
         var request="api/Personajes";
         var url=Global.urlPeliculas+request;
-
         var pelicula={
                 idPersonaje:0,
                 nombre: this.cajaNombre.current.value,
@@ -37,7 +35,7 @@ export default class AgregarPersonaje extends Component {
 
         axios.post(url,pelicula).then(res=>{
             
-            this.setState({state:true})
+            this.setState({serie:res.data.idSerie,status:true})
         })
     }
 
@@ -48,7 +46,7 @@ export default class AgregarPersonaje extends Component {
         axios.get(url).then(res=>{
             console.log(res.data);
            
-            this.setState({stateGet:true,series:res.data,})
+            this.setState({statusGet:true,series:res.data,})
         })
 
     }
@@ -60,7 +58,6 @@ export default class AgregarPersonaje extends Component {
     return (
       <div>
         <h1>Agregar Personaje</h1>
-
         <form className={'form-group'} onSubmit={this.insertarPersonaje}>
             <label>Nombre</label>
             <input type="text" ref={this.cajaNombre} className={'form-control'} />
@@ -69,15 +66,15 @@ export default class AgregarPersonaje extends Component {
             <label>Serie</label>
             <select ref={this.cajaOpcion}>
                 {
-                    
+                    this.state.statusGet==true&&
                     this.state.series.map((serie,index)=>{
                         return(
-                            <option key={serie.idSerie}>{serie.idSerie}</option>
+                            <option value={serie.idSerie} key={serie.idSerie}>{serie.nombre}</option>
                         )
                     })
                 }
             </select><br/>
-            <NavLink to={"/personajes/"} className={"btn btn-info"}>insertar Personaje</NavLink>
+            <NavLink to={"/personajes/"+this.state.serie} className={"btn btn-info"}>insertar Personaje</NavLink>
         </form> 
       </div>
     )

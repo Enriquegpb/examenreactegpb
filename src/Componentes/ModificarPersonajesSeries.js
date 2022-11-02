@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 import Global from '../Global';
 
 export default class ModificarPersonajesSeries extends Component {
@@ -59,10 +60,10 @@ export default class ModificarPersonajesSeries extends Component {
             <label>Serie</label>
             <select ref={this.cajaOpcionS}>
                 {
-                    // this.state.statusGet==true&&
+                    this.state.statusGetSeries==true&&
                     this.state.series.map((serie,index)=>{
                         return(
-                            <option key={serie.idSerie}>{serie.idSerie}</option>
+                            <option value={serie.idSerie} key={serie.idSerie}>{serie.nombre}</option>
                         )
                     })
                 }
@@ -70,15 +71,15 @@ export default class ModificarPersonajesSeries extends Component {
             <label>Personaje</label>
             <select ref={this.cajaOpcionP}>
                 {
-                    // this.state.statusGet==true&&
+                    this.state.statusGetPersonajes==true&&
                     this.state.personajes.map((personaje,index)=>{
                         return(
-                            <option key={personaje.idPersonaje}>{personaje.idPersonaje}</option>
+                            <option value={personaje.idPersonaje} key={personaje.idPersonaje}>{personaje.nombre}</option>
                         )
                     })
                 }
             </select><br/>
-            <button>Guardar Cambios</button>
+            <NavLink to={"/personajes"} className={"btn btn-info"}>insertar Personaje</NavLink>
         </form> 
       </div>
     )

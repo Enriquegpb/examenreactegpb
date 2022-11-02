@@ -27,20 +27,20 @@ export default class MenuPeliculas extends Component {
     return (
         <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">StrangerThings</a>
+          <NavLink className="navbar-brand" href="#">Stranger Things</NavLink>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/agregarpersonaje">Nuevo Personaje</a>
+                <NavLink className="nav-link" to="/agregarpersonaje">Nuevo Personaje</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/modificarpersonajeseries">Modificar Personaje</a>
+                <NavLink className="nav-link" to="/modificarpersonajeseries">Modificar Personaje</NavLink>
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,6 +52,7 @@ export default class MenuPeliculas extends Component {
                   <li><hr className="dropdown-divider"/></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li> */}
                   {
+                    this.state.status==true&&
                     this.state.series.map((serie,index)=>{
                         return(
                             <li key={serie.idSerie}><NavLink className="dropdown-item" to={"/detalleserie/"+serie.idSerie}>{serie.nombre}</NavLink></li>
