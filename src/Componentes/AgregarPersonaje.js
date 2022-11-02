@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Button } from 'bootstrap/dist/js/bootstrap.bundle';
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom';
 import Global from '../Global';
 
 export default class AgregarPersonaje extends Component {
@@ -28,7 +29,7 @@ export default class AgregarPersonaje extends Component {
                 idPersonaje:0,
                 nombre: this.cajaNombre.current.value,
                 imagen: this.cajaImg.current.value,
-                idSerie: parseInt(this.cajaOpcion.current.key.value),
+                idSerie: parseInt(this.cajaOpcion.current.value),
               
         }
 
@@ -68,7 +69,7 @@ export default class AgregarPersonaje extends Component {
             <label>Serie</label>
             <select ref={this.cajaOpcion}>
                 {
-                    // this.state.statusGet==true&&
+                    
                     this.state.series.map((serie,index)=>{
                         return(
                             <option key={serie.idSerie}>{serie.idSerie}</option>
@@ -76,7 +77,7 @@ export default class AgregarPersonaje extends Component {
                     })
                 }
             </select><br/>
-            <button>insertar Personaje</button>
+            <NavLink to={"/personajes/"} className={"btn btn-info"}>insertar Personaje</NavLink>
         </form> 
       </div>
     )
